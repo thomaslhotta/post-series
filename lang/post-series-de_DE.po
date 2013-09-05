@@ -1,14 +1,15 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Post Series\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: Thomas Lhotta <th.lhotta@gmail.com>\n"
-"Language-Team: \n"
+"Language-Team: Thomas Lhotta <th.lhotta@gmail.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
+"Language: German\n"
 
 msgid "Series"
 msgstr "Serie"
@@ -41,10 +42,19 @@ msgid "Add or remove Series"
 msgstr "Serie hinzufügen oder entfernen"
 
 msgid "Choose from the most used Series"
-msgstr "W�hle aus meist verwendeten Serien"
+msgstr "WÃ¤hle aus meist verwendeten Serien"
 
 msgid "No Series found."
 msgstr "Keine Serie gefunden."
 
 msgid "Contents"
 msgstr "Inhalt"
+
+msgid "Post Series Navigation"
+msgstr "Serien Navigation"
+
+msgid "Shows the navigation for a series of posts."
+msgstr "Stellt die Navigation für eine Beitragsseries da."
+
+msgid "Create a series of post or pages and show the navigation in a widget."
+msgstr "Erlaubt die Erstellung und Darstellung von Beitragserien."

@@ -21,7 +21,7 @@
     <h3><?php _e('Contents', 'post-series')?>:</h3>
     
     
-    <ul>
+    <ol>
         <?php foreach ($posts as $post):?>
         <li>
             <?php 
@@ -33,5 +33,5 @@
             ?>
         </li>
         <?php endforeach;?>
-    </ul>
+    </ol>
 </nav>

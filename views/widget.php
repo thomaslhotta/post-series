@@ -18,7 +18,7 @@
         <?php endif?>
     </ul>
     
-    <h3><?php _e('Inhalt', 'post-series')?>:</h3>
+    <h3><?php _e('Contents', 'post-series')?>:</h3>
     
     
     <ul>

@@ -41,7 +41,10 @@ msgid "Add or remove Series"
 msgstr "Serie hinzufÃ¼gen oder entfernen"
 
 msgid "Choose from the most used Series"
-msgstr "Wähle aus meist verwendeten Serien"
+msgstr "Wï¿½hle aus meist verwendeten Serien"
 
 msgid "No Series found."
 msgstr "Keine Serie gefunden."
+
+msgid "Contents"
+msgstr "Inhalt"

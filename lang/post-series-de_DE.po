@@ -1,0 +1,47 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Thomas Lhotta <th.lhotta@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+msgid "Series"
+msgstr "Serie"
+
+msgid "Search Series"
+msgstr "Serie suchen"
+
+msgid "Popular Series"
+msgstr "Häufig verwendete Serien"
+
+msgid "All Series"
+msgstr "Alle Serien"
+
+msgid "Edit Series"
+msgstr "Serie bearbeiten"
+
+msgid "Update Series"
+msgstr "Serie aktualisieren"
+
+msgid "Add New Series"
+msgstr "Neue Serie"
+
+msgid "New Series Name"
+msgstr "Serie Name"
+
+msgid "Separate Series with commas"
+msgstr "Serien müssen durch Kommas getrennt sein"
+
+msgid "Add or remove Series"
+msgstr "Serie hinzufügen oder entfernen"
+
+msgid "Choose from the most used Series"
+msgstr "W�hle aus meist verwendeten Serien"
+
+msgid "No Series found."
+msgstr "Keine Serie gefunden."

@@ -4,10 +4,10 @@
     <!-- Display series as options -->
     <option class='series-option' value='' <?php if ($none) echo "selected";?>>None</option>
     <?php
-    foreach ($series as $single) {
-        echo '<option class="series-option" value="' . $single->slug . '" ';
+    foreach ( $series as $single ) {
+        echo '<option class="series-option" value="' . esc_attr( $single->slug ) . '" ';
         echo $single->selected ? 'selected' : '';
-        echo '>' . $single->name . "</option>\n"; 
+        echo '>' . esc_html( $single->name ) . "</option>\n"; 
     }
     ?>
 </select>    

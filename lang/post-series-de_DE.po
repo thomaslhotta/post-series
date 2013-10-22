@@ -1,60 +1,83 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Post Series\n"
-"POT-Creation-Date: \n"
+"POT-Creation-Date: 2013-10-22 11:29+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Thomas Lhotta <th.lhotta@gmail.com>\n"
 "Language-Team: Thomas Lhotta <th.lhotta@gmail.com>\n"
+"Language: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x;esc_html_e;esc_html__;esc_attr_e;"
+"esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 1.5.4\n"
-"Language: German\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
 
-msgid "Series"
-msgstr "Serie"
-
-msgid "Search Series"
-msgstr "Serie suchen"
-
-msgid "Popular Series"
-msgstr "Häufig verwendete Serien"
-
-msgid "All Series"
-msgstr "Alle Serien"
-
-msgid "Edit Series"
-msgstr "Serie bearbeiten"
-
-msgid "Update Series"
-msgstr "Serie aktualisieren"
-
-msgid "Add New Series"
-msgstr "Neue Serie"
-
-msgid "New Series Name"
-msgstr "Serie Name"
-
-msgid "Separate Series with commas"
-msgstr "Serien müssen durch Kommas getrennt sein"
-
-msgid "Add or remove Series"
-msgstr "Serie hinzufügen oder entfernen"
-
-msgid "Choose from the most used Series"
-msgstr "WÃ¤hle aus meist verwendeten Serien"
-
-msgid "No Series found."
-msgstr "Keine Serie gefunden."
-
-msgid "Contents"
-msgstr "Inhalt"
-
+#: post-series.php:72
 msgid "Post Series Navigation"
 msgstr "Serien Navigation"
 
+#: post-series.php:75
 msgid "Shows the navigation for a series of posts."
 msgstr "Stellt die Navigation für eine Beitragsseries da."
 
-msgid "Create a series of post or pages and show the navigation in a widget."
-msgstr "Erlaubt die Erstellung und Darstellung von Beitragserien."
+#: post-series.php:230 post-series.php:231 post-series.php:245
+#: post-series.php:265 post-series.php:266
+msgid "Series"
+msgstr "Serie"
+
+#: post-series.php:232
+msgid "Search Series"
+msgstr "Serie suchen"
+
+#: post-series.php:233
+msgid "Popular Series"
+msgstr "Häufig verwendete Serien"
+
+#: post-series.php:234
+msgid "All Series"
+msgstr "Alle Serien"
+
+#: post-series.php:237
+msgid "Edit Series"
+msgstr "Serie bearbeiten"
+
+#: post-series.php:238
+msgid "Update Series"
+msgstr "Serie aktualisieren"
+
+#: post-series.php:239
+msgid "Add New Series"
+msgstr "Neue Serie"
+
+#: post-series.php:240
+msgid "New Series Name"
+msgstr "Serie Name"
+
+#: post-series.php:241
+msgid "Separate Series with commas"
+msgstr "Serien müssen durch Kommas getrennt sein"
+
+#: post-series.php:242
+msgid "Add or remove Series"
+msgstr "Serie hinzufügen oder entfernen"
+
+#: post-series.php:243
+msgid "Choose from the most used Series"
+msgstr "Wähle aus meist verwendeten Serien"
+
+#: post-series.php:244
+msgid "No Series found."
+msgstr "Keine Serie gefunden."
+
+#: views/widget.php:21
+msgid "Contents"
+msgstr "Inhalt"
+
+#~ msgid ""
+#~ "Create a series of post or pages and show the navigation in a widget."
+#~ msgstr "Erlaubt die Erstellung und Darstellung von Beitragserien."

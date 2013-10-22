@@ -30,12 +30,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 
-define('POST_SERIES_DIR', ABSPATH . 'wp-content/plugins/' . (basename(dirname(__FILE__))));
-define('POST_SERIES_FILE', POST_SERIES_DIR . '/' . (basename(__FILE__)));
+define( 'POST_SERIES_DIR', ABSPATH . 'wp-content/plugins/' . ( basename( dirname( __FILE__ ) ) ) );
+define( 'POST_SERIES_FILE', POST_SERIES_DIR . '/' . ( basename( __FILE__ ) ) );
 
 class Post_Series extends WP_Widget {
 
     protected $text_domain = 'post-series';
+    
+    protected $defaults = array(
+    	'before_widget' => '',
+        'after_widget' => '',
+    );
     
     /*--------------------------------------------------*/
 	/* Constructor
@@ -51,8 +56,10 @@ class Post_Series extends WP_Widget {
 		add_action( 'init', array( $this, 'widget_textdomain' ) );
 		add_action( 'init', array( $this, 'register_taxonomy' ) );
 		
-		if ( is_admin()) {
-		    add_action( 'admin_menu' , array ( $this, 'add_admin_box') );
+		add_shortcode( 'post_series', array( $this, 'shortcode' ) );
+		
+		if ( is_admin() ) {
+		    add_action( 'admin_menu' , array( $this, 'add_admin_box' ) );
 		}
 		
 		
@@ -62,7 +69,7 @@ class Post_Series extends WP_Widget {
 
 		parent::__construct(
 			'post-series',
-			__( 'Post Series Navigation', $this->text_domain),
+			__( 'Post Series Navigation', $this->text_domain ),
 			array(
 				'classname'		=>	'post-series',
 				'description'	=>	__( 'Shows the navigation for a series of posts.', $this->text_domain )
@@ -82,28 +89,29 @@ class Post_Series extends WP_Widget {
 	 * @param	array	args		The array of form elements
 	 * @param	array	instance	The current instance of the widget
 	 */
-	public function widget( $args, $instance ) {
-
+	public function widget( $args = '', $instance = array() ) {
+		$args = wp_parse_args( $args, $this->defaults );
+		 
 		extract( $args, EXTR_SKIP );
 
 		$current_post_id = get_the_ID();
 		
-		$series = wp_get_post_terms(get_the_ID(), 'series', array("fields" => "all"));
+		$series = wp_get_post_terms( get_the_ID(), 'series', array( 'fields' => 'all' ) );
 		
 		// Don't show anything if the current post is not part of a series
-		if ( count($series) <= 0 ) {
+		if ( count( $series ) <= 0 ) {
 		    return;
 		}
 		
 		// Init vars
-		$series = reset($series);
+		$series = reset( $series );
 		$posts = array();
 		$loop_prev_post = array();
 		$prev_post = array();
 		$next_post = array();
 
 		// Find other posts of series
-		$args = array(
+		$query_args = array(
 		    'post_type' => get_post_type(),
 		    'order'   => 'ASC', 
 		    'orderby' => 'date',
@@ -111,15 +119,15 @@ class Post_Series extends WP_Widget {
 		        array(
 		            'taxonomy' => 'series',
 		            'field' => 'id',
-		            'terms' => $series->term_id
-		        )
+		            'terms' => $series->term_id,
+		        ),
 		    )
 		);
 		
-		$query = new WP_Query( $args );
+		$query = new WP_Query( $query_args );
 		
 		// Find previous and next post, transform posts to array.
-		while($query->have_posts()) {
+		while ( $query->have_posts() ) {
 		    $query->the_post();
 		    $post = array(
 		        'ID'     => get_the_ID(),
@@ -133,7 +141,7 @@ class Post_Series extends WP_Widget {
 		        $prev_post = $loop_prev_post;
 		    }
 		    
-		    if ( !empty( $loop_prev_post ) && $loop_prev_post['ID'] == $current_post_id) {
+		    if ( !empty( $loop_prev_post ) && $loop_prev_post['ID'] == $current_post_id ) {
 		        $next_post = $post;
 		    }
 		    
@@ -150,6 +158,20 @@ class Post_Series extends WP_Widget {
 
 	} // end widget
 
+	/**
+	 * Short code version of widget.
+	 * 
+	 * @return string
+	 */
+	public function shortcode()
+	{
+		ob_start();
+		$this->widget();
+		$html = ob_get_contents();
+		ob_end_clean();
+		return $html;
+	}
+	
 	/**
 	 * Processes the widget's options to be saved.
 	 *
@@ -193,7 +215,7 @@ class Post_Series extends WP_Widget {
 	public function widget_textdomain() {
 
 		//load_plugin_textdomain( $this->text_domain , false, POST_SERIES_DIR . '/lang/' );
-	    load_plugin_textdomain( $this->text_domain , false, basename(dirname(__FILE__)) . '/lang/' );
+	    load_plugin_textdomain( $this->text_domain , false, basename( dirname( __FILE__ ) ) . '/lang/' );
 
 	} // end widget_textdomain
 
@@ -219,7 +241,7 @@ class Post_Series extends WP_Widget {
 	{
 	    // Add new taxonomy, NOT hierarchical (like tags)
 	    $labels = array(
-	        'name'                       => __( 'Series', $this->text_domain),
+	        'name'                       => __( 'Series', $this->text_domain ),
 	        'singular_name'              => __( 'Series', $this->text_domain, $this->text_domain ),
 	        'search_items'               => __( 'Search Series', $this->text_domain ),
 	        'popular_items'              => __( 'Popular Series', $this->text_domain ),
@@ -252,24 +274,24 @@ class Post_Series extends WP_Widget {
 	
 	public function add_admin_box() 
 	{
-	    remove_meta_box('tagsdiv-series', 'page',' core');
-	    remove_meta_box('tagsdiv-series', 'post',' core');
-	    add_meta_box('series_box_ID', __('Series', 'post-series'), array( $this, 'style_admin_box'), 'page', 'side', 'core');
-	    add_meta_box('series_box_ID', __('Series', 'post-series'), array( $this, 'style_admin_box'), 'post', 'side', 'core');
+	    remove_meta_box( 'tagsdiv-series', 'page',' core' );
+	    remove_meta_box( 'tagsdiv-series', 'post',' core' );
+	    add_meta_box( 'series_box_ID', __( 'Series', 'post-series' ), array( $this, 'style_admin_box' ), 'page', 'side', 'core' );
+	    add_meta_box( 'series_box_ID', __( 'Series', 'post-series' ), array( $this, 'style_admin_box' ), 'post', 'side', 'core' );
 	    
 	}
 	
 	public function style_admin_box() 
 	{
-	    $series = get_terms('series', 'hide_empty=0');
-	    $active = wp_get_object_terms(get_the_ID(), 'series');
-	    $active = reset($active);
+	    $series = get_terms( 'series', 'hide_empty=0' );
+	    $active = wp_get_object_terms( get_the_ID(), 'series' );
+	    $active = reset( $active );
 	    
 	    $none = true;
 	    
-	    foreach ($series as $single) {
+	    foreach ( $series as $single ) {
 	        $single->selected = false;
-	        if (!empty($active) and $single->term_id = $active->term_id) {
+	        if ( !empty( $active ) and $single->term_id = $active->term_id ) {
 	            $single->selected = true;
 	            $found = false;
 	        }

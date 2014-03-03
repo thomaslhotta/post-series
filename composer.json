@@ -1,0 +1,16 @@
+{
+    "name": "thomaslhotta/post-series",
+    "description": "Allows the creation of a post series with series navigation",
+    "license": "MIT",
+    "type": "wordpress-plugin",
+    "authors": [
+        {
+            "name": "Thomas Lhotta",
+            "email": "th.lhotta@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "fancyguy/webroot-installer": "1.1.0"
+    }
+}

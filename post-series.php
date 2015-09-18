@@ -3,7 +3,7 @@
 Plugin Name: Post series
 Plugin URI: 
 Description: Create a series of post or pages and show the navigation in a widget.
-Version: 1.0
+Version: 1.1
 Author: Thomas Lhotta
 Author URI: github.com/thomaslhotta
 Author Email: th.lhotta@gmail.com
@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 
-define( 'POST_SERIES_DIR', ABSPATH . 'wp-content/plugins/' . ( basename( dirname( __FILE__ ) ) ) );
+define( 'POST_SERIES_DIR', __DIR__ );
 define( 'POST_SERIES_FILE', POST_SERIES_DIR . '/' . ( basename( __FILE__ ) ) );
 
 class Post_Series extends WP_Widget {
@@ -59,7 +59,7 @@ class Post_Series extends WP_Widget {
 		add_shortcode( 'post_series', array( $this, 'shortcode' ) );
 		
 		if ( is_admin() ) {
-		    add_action( 'admin_menu' , array( $this, 'add_admin_box' ) );
+		    add_action( 'admin_menu' , array( $this, 'add_admin_box' ), 100 );
 		}
 		
 		
@@ -276,9 +276,8 @@ class Post_Series extends WP_Widget {
 	{
 	    remove_meta_box( 'tagsdiv-series', 'page',' core' );
 	    remove_meta_box( 'tagsdiv-series', 'post',' core' );
-	    add_meta_box( 'series_box_ID', __( 'Series', 'post-series' ), array( $this, 'style_admin_box' ), 'page', 'side', 'core' );
-	    add_meta_box( 'series_box_ID', __( 'Series', 'post-series' ), array( $this, 'style_admin_box' ), 'post', 'side', 'core' );
-	    
+	    add_meta_box( 'series_box_ID', __( 'Series', 'post-series' ), array( $this, 'style_admin_box' ), 'page', 'side' );
+	    add_meta_box( 'series_box_ID', __( 'Series', 'post-series' ), array( $this, 'style_admin_box' ), 'post', 'side' );
 	}
 	
 	public function style_admin_box() 
@@ -296,7 +295,7 @@ class Post_Series extends WP_Widget {
 	            $found = false;
 	        }
 	    }
-	    
+
 	    include( POST_SERIES_DIR . '/views/admin-box.php' );
 	}
 	
@@ -304,3 +303,4 @@ class Post_Series extends WP_Widget {
 } // end class
 
 add_action( 'widgets_init', create_function( '', 'register_widget("Post_Series");' ) );
+
